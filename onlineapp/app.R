@@ -2,6 +2,9 @@ library("shiny")
 library("RMySQL")
 library("oolong")
 
+
+## this is modifying your package minimally to allow accessing the 
+## test data
 Oolong_test_tm <-
   R6::R6Class(
     "oolong_test_tm",
@@ -29,6 +32,7 @@ Oolong_test_tm <-
         .cstop(is.null(private$test_content$topic), "No topic intrusion test cases. Create the oolong test with the corpus to generate topic intrusion test cases.")
         private$test_content$topic <- .do_oolong_test(private$test_content$topic, ui = .UI_TOPIC_INTRUSION_TEST, .ren = .ren_topic_intrusion_test)
       },
+      
       return_data=function(){return(private$test_content$word)},
       get_test=function(){return(private$test_content)}
     ),
@@ -39,7 +43,10 @@ Oolong_test_tm <-
     )
   )
 
-load("oolong_object.rdata")
+githubURL <- "https://github.com/msaeltzer/oolong/raw/master/onlineapp/oolong_object.Rdata"
+load(url(githubURL))
+
+# the underlying object was created using this new version of the oolong object
 test_content<-o1$get_test()
 test_content<-test_content$word
 user <- 'hong'
