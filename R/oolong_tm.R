@@ -2,6 +2,8 @@
 ### function names: use full name, except ren for render
 ### data structures: use singular, except list-column.
 
+
+
 .insert <- function(good_terms, intruder, position) {
     length_test_items <- length(c(good_terms, intruder))
     res <- rep(NA, length_test_items)
@@ -55,7 +57,7 @@
     )
 )
 
-.ren_word_intrusion_test <- function(output, test_content, res) {
+ren_word_intrusion_test <- function(output, test_content, res) {
     .ren_choices <- function(test_content, res) {
         shiny::renderUI({
             shiny::radioButtons("intruder", label = "Which of the following is an intruder word?", choices = test_content$candidates[[res$current_row]], selected = res$intruder[res$current_row])
@@ -304,7 +306,7 @@
 }
 
 
-
+## i added a new public function that allows extracting the data
 Oolong_test_tm <-
     R6::R6Class(
         "oolong_test_tm",
@@ -331,7 +333,7 @@ Oolong_test_tm <-
                 private$check_finalized()
                 .cstop(is.null(private$test_content$topic), "No topic intrusion test cases. Create the oolong test with the corpus to generate topic intrusion test cases.")
                 private$test_content$topic <- .do_oolong_test(private$test_content$topic, ui = .UI_TOPIC_INTRUSION_TEST, .ren = .ren_topic_intrusion_test)
-            }
+            },
         ),
         private = list(
             hash = NULL,
