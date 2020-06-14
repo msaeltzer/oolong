@@ -10,6 +10,7 @@
 #' @name oolong
 NULL
 
+
 Oolong_test <- R6::R6Class(
     "oolong_generic",
     public = list(
@@ -31,6 +32,7 @@ Oolong_test <- R6::R6Class(
         }
     )
 )
+
 
 #' Generate an oolong test
 #'
