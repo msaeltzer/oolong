@@ -49,8 +49,8 @@ load(url(githubURL))
 # the underlying object was created using this new version of the oolong object
 test_content<-o1$get_test()
 test_content<-test_content$word
-user <- 'hong'
-password <- 'test'
+user <- 'user'
+password <- 'particip8'
 
 # does NOT COLLECT THE ANSWERS!!!
 build_df<-function(o1,updated,user){
